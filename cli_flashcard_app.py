@@ -11,11 +11,11 @@ class Flashcard:
         print(self.question)
     
     def flip_card(self):
-        input("Press \"Enter\" to flip card.")
-        print(self.answer)
+        input("\nPress \"Enter\" to flip card.")
+        print("\n" + self.answer)
 
     def gain_feedback(self) -> int:
-        print("Press the following key:")
+        print("\nPress the following key:")
         print("1 Trivial | 2 Easy | 3 Medium | 4 Hard")
         self.feedback = int(input("> "))
 
@@ -32,15 +32,26 @@ class Flashcard:
 
 class App:
     def __init__(self):
-        self.flashcards = []
+        self.flashcards = [
+                Flashcard("What's the capital of Malaysia?", "Kuala Lumpur"),
+                Flashcard("What is 5 + 7?", "12"),
+                Flashcard("What language is primarily used for Android apps?", "Kotlin"),
+                Flashcard("What planet is known as the Red Planet?", "Mars"),
+                Flashcard("What does CPU stand for?", "Central Processing Unit")
+        ]
+
+    def run(self):
+        for i, card_obj in enumerate(self.flashcards):
+            os.system("clear")
+            print(f"CARD #{i+1}")
+            card_obj.display_card()
+            card_obj.flip_card()
+            self.feedback = card_obj.gain_feedback()
+            card_obj.update_interval_days(self.feedback)
 
 def main():
-    q1 = Flashcard("What's the capital of Malaysia?", "Kuala Lumpur")
-    print(q1.interval_days)
-    q1.display_card()
-    q1.flip_card()
-    q1.gain_feedback()
-    q1.update_interval_days(q1.feedback)
-    print(q1.interval_days)
+    app = App()
+    app.run()
+
 if __name__ == "__main__":
     main()
