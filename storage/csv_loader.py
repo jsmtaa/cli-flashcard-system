@@ -1,14 +1,14 @@
 import csv
 
 def csv_loader(file):
-    cards = []
+    rows = []
     with open(file, "r") as f:
         data = csv.reader(f)
         next(data)
         for row in data:
-            cards.append(row) 
-    return cards
+            rows.append(row) 
+    return row
 
 if __name__ == "__main__":
-    cards = csv_loader("storage/flashcards.csv")
-    print(cards)
+    rows = csv_loader("storage/flashcards.csv")
+    print(rows)
