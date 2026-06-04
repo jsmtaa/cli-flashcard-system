@@ -7,7 +7,7 @@ def csv_loader(file):
         next(data)
         for row in data:
             rows.append(row) 
-    return row
+    return rows
 
 if __name__ == "__main__":
     rows = csv_loader("storage/flashcards.csv")
