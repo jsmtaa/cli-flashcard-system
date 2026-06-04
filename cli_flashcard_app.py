@@ -32,13 +32,11 @@ class Flashcard:
 
 class App:
     def __init__(self):
-        self.flashcards = [
-                Flashcard("What's the capital of Malaysia?", "Kuala Lumpur"),
-                Flashcard("What is 5 + 7?", "12"),
-                Flashcard("What language is primarily used for Android apps?", "Kotlin"),
-                Flashcard("What planet is known as the Red Planet?", "Mars"),
-                Flashcard("What does CPU stand for?", "Central Processing Unit")
-        ]
+        self.flashcards = [] 
+        with open("flashcards.csv") as f:
+            for card in f.read().splitlines():
+                question, answer = card.split(",")
+                self.flashcards.append(Flashcard(question, answer))
 
     def run(self):
         for i, card_obj in enumerate(self.flashcards):
