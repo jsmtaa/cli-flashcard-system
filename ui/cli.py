@@ -1,8 +1,13 @@
-def display_card(card_type):
-    post_question(card_type)
-    get_answer(card_type)
-    receive_feedback()
+import os
 
+def display_card(card_type, question, answer, choices=[]):
+    show_question(card_type, question, choices)
+    get_user_answer(card_type)
+    # TODO: Validate answer in future
+    show_correct_answer(answer)
+    input("\nPress anything to continue...")
+    os.system("clear")
+    
 def show_question(card_type, question, choices=[]):
     print(question)
     if choices and card_type == 3:

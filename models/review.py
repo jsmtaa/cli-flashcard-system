@@ -10,23 +10,13 @@ class ReviewSession:
         for card in self.deck:
             card_type = int(card[0])
             question, correct_answer = card[1], card[2]
-            if len(card) == 4: # 4 is one with Multiple choice
+
+            hasChoices = len(card) == 4
+            if hasChoices: # 4 is one with Multiple choice
                 choices = card[3].split(",")
-                self.cli.show_question(card_type, question, choices)
+                self.cli.display_card(card_type, question, correct_answer, choices)
             else:
-                self.cli.show_question(card_type, question)
+                self.cli.display_card(card_type, question, correct_answer)
 
-            self.cli.get_user_answer(card_type)
             
-            # TODO: Validate answer in future
-            
-            self.cli.show_correct_answer(correct_answer)
-            
-            input("press anything to continue")
-
-            os.system("clear")
-
-            # feedback = self.cli.get_feedback()
-            
-            # interval_days = update_interval_days(feedback)
             
