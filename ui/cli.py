@@ -1,6 +1,16 @@
 import os
 
-def display_card(card_type, question, answer, choices=[]):
+def get_deck(decks):
+    print("Choose a deck:")
+    hashmap = {}
+    for i, deck in enumerate(decks):
+        print(f"{i+1}. {decks[deck]["name"]}") 
+        hashmap[i] = deck
+
+    choice = int(input("> ")) - 1
+    return decks[hashmap[choice]]
+
+def display_card(card_type: int, question: str, answer: str, choices=[]: Optional[List[str]]) -> None:
     show_question(card_type, question, choices)
     get_user_answer(card_type)
     # TODO: Validate answer in future
@@ -8,15 +18,16 @@ def display_card(card_type, question, answer, choices=[]):
     input("\nPress anything to continue...")
     os.system("clear")
     
-def show_question(card_type, question, choices=[]):
+def show_question(card_type: int, question: str, choices=[]: Optional[List[str]]) -> None:
     print(question)
-    if choices and card_type == 3:
+    choices = choices.split(", ")
+    if card_type == 3:
         for idx, choice in enumerate(choices):
             letter_choice = chr(ord("A") + idx)
             print(f"{letter_choice}. {choice}")
     
 
-def get_user_answer(card_type):
+def get_user_answer(card_type: int) -> str:
     match card_type:
         case 1:
             print("Press \"Enter\" to flip card.")
