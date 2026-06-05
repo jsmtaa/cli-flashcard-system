@@ -1,17 +1,27 @@
 import csv
 
-def deck_loader(file, deck_id):
-    rows = []
-    with open(file, "r") as f:
-        data = csv.DictReader(f)
-        for row in data:
-            if row["deck_id"] == deck_id:
-                rows.append(row)
-    return rows
+def _load_csv_rows(path):
+    with open(path, "r") as f:
+        return list(csv.DictReader(f))
+
+
+def deck_loader(decks_path, cards_path):
+    decks = {}
+
+    for row in _load_csv_rows(decks_path):
+        deck = {"name": row["deck_name"], "cards": []}
+        decks[row["deck_id"]] = deck
+
+    for row in _load_csv_rows(cards_path):
+        deck = decks[row["deck_id"]]
+        deck["cards"].append(row)
+
+    return decks
+
 
 def main():
-    rows = deck_loader("storage/flashcards.csv", "12345")
-    print(rows)
+    decks = deck_loader("storage/decks.csv","storage/flashcards.csv")
+    print(decks)
 
 if __name__ == "__main__":
     main()
