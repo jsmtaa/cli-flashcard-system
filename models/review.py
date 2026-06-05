@@ -7,16 +7,10 @@ class ReviewSession:
 
     def run(self):
         os.system("clear")
-        for card in self.deck:
-            card_type = int(card[0])
-            question, correct_answer = card[1], card[2]
-
-            hasChoices = len(card) == 4
-            if hasChoices: # 4 is one with Multiple choice
-                choices = card[3].split(",")
-                self.cli.display_card(card_type, question, correct_answer, choices)
+        for card in self.deck["cards"]:
+            hasChoices = card["choices"] != ""
+            if hasChoices:
+                choices = card["choices"].split(",")
+                self.cli.display_card(int(card["card_type"]), card["question"], card["answer"], card["choices"])
             else:
-                self.cli.display_card(card_type, question, correct_answer)
-
-            
-            
+                self.cli.display_card(int(card["card_type"]), card["question"], card["answer"], card["choices"])
