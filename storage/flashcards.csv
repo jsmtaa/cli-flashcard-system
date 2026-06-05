@@ -1,4 +1,13 @@
 card_id,deck_id,card_type,question,answer,choices
-00000,12345,1,What's the capital of Malaysia?,Kuala Lumpur
-00001,54321,2,5 + 7 is _,12
+00000,12345,1,What's the capital of Malaysia?,Kuala Lumpur,
+00003,12345,1,What's the capital of Japan?,Tokyo,
+00004,12345,1,What's the capital of France?,Paris,
+00005,12345,1,What's the capital of Thailand?,Bangkok,
+00001,54321,2,5 + 7 is _,12,
+00006,54321,2,9 × 8 is _,72,
+00007,54321,2,15 - 6 is _,9,
+00008,54321,2,10 + 25 is _,35,
 00002,67890,3,What planet is known as the Red Planet?,Mars,"Jupiter, Saturn, Mars, Earth"
+00009,67890,3,What is the largest ocean on Earth?,Pacific Ocean,"Atlantic Ocean, Indian Ocean, Pacific Ocean, Arctic Ocean"
+00010,67890,3,Which language is primarily used for Android apps?,Kotlin,"Python, JavaScript, Kotlin, Swift"
+00011,67890,3,What data structure uses FIFO order?,Queue,"Stack, Queue, Tree, Graph"
