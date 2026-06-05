@@ -1,4 +1,4 @@
-card_type,question,answer,choices
-1,What's the capital of Malaysia?,Kuala Lumpur
-2,5 + 7 is _,12
-3,What planet is known as the Red Planet?,Mars,"Jupiter, Saturn, Mars, Earth"
+card_id,deck_id,card_type,question,answer,choices
+00000,12345,1,What's the capital of Malaysia?,Kuala Lumpur
+00001,54321,2,5 + 7 is _,12
+00002,67890,3,What planet is known as the Red Planet?,Mars,"Jupiter, Saturn, Mars, Earth"
