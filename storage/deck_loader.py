@@ -1,4 +1,6 @@
 import csv
+from models.flashcard import Flashcard
+from models.deck import Deck
 
 def _load_csv_rows(path):
     with open(path, "r") as f:
@@ -7,14 +9,22 @@ def _load_csv_rows(path):
 
 def deck_loader(decks_path, cards_path):
     decks = {}
-
+    
     for row in _load_csv_rows(decks_path):
-        deck = {"name": row["deck_name"], "cards": []}
+        deck = Deck(row["deck_id"], row["deck_name"])
         decks[row["deck_id"]] = deck
 
     for row in _load_csv_rows(cards_path):
+        card_obj = Flashcard(
+                row["deck_id"], 
+                row["card_id"], 
+                row["card_type"], 
+                row["question"], 
+                row["answer"], 
+                row["choices"]
+            )
         deck = decks[row["deck_id"]]
-        deck["cards"].append(row)
+        deck.cards.append(card_obj)
 
     return decks
 

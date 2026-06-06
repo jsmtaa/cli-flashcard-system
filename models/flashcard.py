@@ -1,5 +1,7 @@
 class Flashcard:
-    def __init__(self, card_type, question, answer, choices=None: List[str]):
+    def __init__(self, deck_id, card_id, card_type, question, answer, choices=None):
+        self.deck_id = deck_id
+        self.card_id = card_id
         self.card_type = card_type
         self.question = question
         self.answer = answer

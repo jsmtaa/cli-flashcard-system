@@ -4,21 +4,21 @@ def get_deck(decks):
     print("Choose a deck:")
     hashmap = {}
     for i, deck in enumerate(decks):
-        print(f"{i+1}. {decks[deck]["name"]}") 
+        print(f"{i+1}. {decks[deck].deck_name}") 
         hashmap[i] = deck
 
     choice = int(input("> ")) - 1
     return decks[hashmap[choice]]
 
-def display_card(card_type: int, question: str, answer: str, choices=[]: Optional[List[str]]) -> None:
-    show_question(card_type, question, choices)
-    get_user_answer(card_type)
-    # TODO: Validate answer in future
-    show_correct_answer(answer)
-    input("\nPress anything to continue...")
+def display_card(card) -> None:
     os.system("clear")
+    show_question(int(card.card_type), card.question, card.choices)
+    get_user_answer(card.card_type)
+    # TODO: Validate answer in future
+    show_correct_answer(card.answer)
+    input("\nPress anything to continue...")
     
-def show_question(card_type: int, question: str, choices=[]: Optional[List[str]]) -> None:
+def show_question(card_type: int, question: str, choices=[]) -> None:
     print(question)
     choices = choices.split(", ")
     if card_type == 3:
