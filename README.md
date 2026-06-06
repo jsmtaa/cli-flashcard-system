@@ -18,11 +18,9 @@ Command-line flashcard app for running simple review sessions in the terminal.
 python main.py
 ```
 
-## In progress / future features
-
+## In progress / future featur
 - Validate user answers instead of only revealing the correct answer
 - Wire feedback scoring into the review flow
-- Use `Flashcard` objects instead of raw CSV rows
-- Implement the `Deck` model
 - Track review intervals with spaced-repetition-style logic
 - Update card scheduling data back into storage
+- Integrate AI to suggest hints, answer feedback, and possibly advanced features such as card generators
